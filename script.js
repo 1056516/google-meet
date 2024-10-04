@@ -2,6 +2,7 @@ let localStream;
 const localVideo = document.getElementById('localVideo');
 const remoteVideo = document.getElementById('remoteVideo');
 const meetingContainer = document.getElementById('meeting-container');
+const currentMeetingId = document.getElementById('currentMeetingId');
 
 // Get access to the user's camera and microphone
 async function startLocalStream() {
@@ -11,15 +12,24 @@ async function startLocalStream() {
 
 // Handle actions for creating and joining meetings
 document.getElementById('createBtn').onclick = async () => {
-    alert('Meeting created! (No real functionality)');
-    await startLocalStream();
+    const response = await fetch('/create_meeting');
+    const data = await response.json();
+
+    currentMeetingId.innerText = data.meetingId;
     meetingContainer.classList.remove('hidden');
+    await startLocalStream();
 };
 
 document.getElementById('joinBtn').onclick = () => {
-    alert('Joining meeting... (No actual joining functionality)');
-    meetingContainer.classList.remove('hidden');
+    const meetingIdInput = document.getElementById('meetingId').value;
+    if (meetingIdInput) {
+        currentMeetingId.innerText = meetingIdInput;
+        meetingContainer.classList.remove('hidden');
+        startLocalStream();
+    } else {
+        alert("Please enter a Meeting ID.");
+    }
 };
 
-// On page load, start the local stream
+// Initialize the local stream on page load
 startLocalStream();
