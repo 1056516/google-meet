@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #202124;
+    color: white;
+}
+
+#app {
+    text-align: center;
+}
+
+#controls {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #1a73e8;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0c59d2;
+}
+
+#meeting-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+video {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin: 5px;
+}
+
+.hidden {
+    display: none;
+}
